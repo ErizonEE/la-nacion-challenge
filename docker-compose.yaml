@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  api:
+    image: base-image
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - './api:/api'
+    depends_on:
+      - db
+    networks:
+      - backend
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=hop-envios
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=123
+    restart: always
+    volumes: 
+      - "./db:/var/lib/mysql"
+    networks:
+      backend:
+        aliases:
+          - db
+networks:
+  backend:

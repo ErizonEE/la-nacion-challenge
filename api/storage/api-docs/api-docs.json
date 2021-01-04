@@ -1,0 +1,453 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Extended Swapi API",
+        "description": "URL de la API Original: <a target='_blank' href='https://swapi.dev/documentation'>https://swapi.dev/documentation</a>",
+        "contact": "Erizon Encina",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/starships": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Return starships collection",
+                "operationId": "App\\Http\\Controllers\\StarshipController::index",
+                "responses": {
+                    "200": {
+                        "description": "Return starships collection"
+                    }
+                }
+            }
+        },
+        "/api/starships/{id}": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Return specefic starship data",
+                "description": "Returns starship data",
+                "operationId": "getStarshipById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Starship id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/starships/{id}/set-counter": {
+            "post": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Set count property in x",
+                "description": "Set count property",
+                "operationId": "setCounter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Starship Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Starship Inventory Number",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "count"
+                                ],
+                                "properties": {
+                                    "count": {
+                                        "description": "Set count property in x",
+                                        "type": "integer",
+                                        "example": "100"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Invalidad Input",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/starships/{id}/increase-counter": {
+            "post": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Increment count property in x",
+                "description": "increment count property for x",
+                "operationId": "increaseCounter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Starship Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Number for increase inventory number",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "count"
+                                ],
+                                "properties": {
+                                    "count": {
+                                        "description": "Increment count property in x",
+                                        "type": "integer",
+                                        "example": "10"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Invalidad Input"
+                    }
+                }
+            }
+        },
+        "/api/starships/{id}/decrease-counter": {
+            "post": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Decremente counte property in x",
+                "description": "decrement count property for x",
+                "operationId": "decreaseCounter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Starship Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Number for decrease inventory number",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "count"
+                                ],
+                                "properties": {
+                                    "count": {
+                                        "description": "Decremente counte property in x",
+                                        "type": "integer",
+                                        "example": "10"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Invalidad Input"
+                    }
+                }
+            }
+        },
+        "/api/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Return vehicles collection",
+                "operationId": "App\\Http\\Controllers\\VehicleController::index",
+                "responses": {
+                    "200": {
+                        "description": "Return vehicles collection"
+                    }
+                }
+            }
+        },
+        "/api/vehicles/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Return specific vehicle data",
+                "description": "Returns vehicle data",
+                "operationId": "App\\Http\\Controllers\\VehicleController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/vehicles/{id}/set-counter": {
+            "post": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Set count property in x",
+                "description": "Set count property",
+                "operationId": "App\\Http\\Controllers\\VehicleController::setCounter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Vehicle Inventory Number",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "count"
+                                ],
+                                "properties": {
+                                    "count": {
+                                        "description": "Set count property in x",
+                                        "type": "integer",
+                                        "example": "100"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Invalidad Input"
+                    }
+                }
+            }
+        },
+        "/api/vehicles/{id}/increase-counter": {
+            "post": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Increment count property in x",
+                "description": "Increment count property for x",
+                "operationId": "App\\Http\\Controllers\\VehicleController::increaseCounter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Increment count property for x",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "count"
+                                ],
+                                "properties": {
+                                    "count": {
+                                        "description": "Increment count property in x",
+                                        "type": "integer",
+                                        "example": "100"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Invalidad Input"
+                    }
+                }
+            }
+        },
+        "/api/vehicles/{id}/decrease-counter": {
+            "post": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Decremente count property in x",
+                "description": "Decrease count property",
+                "operationId": "App\\Http\\Controllers\\VehicleController::decreaseCounter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Decrement count property for x",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "count"
+                                ],
+                                "properties": {
+                                    "count": {
+                                        "description": "Decremente count property in x",
+                                        "type": "integer",
+                                        "example": "100"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Invalidad Input"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

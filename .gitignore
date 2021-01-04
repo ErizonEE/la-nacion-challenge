@@ -1,0 +1,7 @@
+/db
+/api/vendor
+/api/.editorconfig
+/api/.styleci.yml
+/api/docker-compose.yml
+/api/package.json
+/api/webpack.mix.js
